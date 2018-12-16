@@ -24,9 +24,9 @@ connection.connect(function (err) {
   console.log("  _(\    |@@|")
   console.log(" (__/\__ \--/ __                   Welcome to Bamazon!")
   console.log("   \___|----|  |   __")
-  console.log("       \ }{ /\ )_ / _\        What would you like to order?")
+  console.log("       \ }{ /\ )_ / _\     You're just in time for the holidays!")
   console.log("       /\__/\ \__O (__")
-  console.log("       (--/\--)   \__/               [Quit with Q]")
+  console.log("       (--/\--)   \__/         What would you like to order?")
   console.log("       _)(  )(_")
   console.log("      `---''---`")
   console.log("======================================================================")
@@ -49,12 +49,12 @@ function displayInventory() {
           {
             type: "input",
             name: "itemID",
-            message: "What is the ID of the item you would like to purchase? [Quit with Q]",
+            message: "What is the ID of the item you would like to purchase?",
           },
           {
             type: "input",
             name: "itemNum",
-            message: "How many would you like? [Quit with Q]",
+            message: "How many would you like?",
           }
         ]).then(function(answers) {
           var userChoice = parseInt(answers.itemID);
