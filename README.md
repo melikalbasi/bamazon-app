@@ -1,6 +1,6 @@
 # Bamazon App
 
-Bamazon offers you the experience of shopping online through your command line. 
+Bamazon offers you the experience of shopping online through your command line. You can use this app in customer view or manager view. Customer view allows you to shop for the items available while Manager view allows you to keep track of your stock, update inventory, and add new products.
 
 ## Getting Started
 
@@ -26,6 +26,11 @@ make sure to update your local password for mysql in each file being ran.
 To run customer view, use 
 ```
 node bamazonCustomer.js
+```
+
+Alternatively, you can also see the manager view by running
+```
+node bamazonManager.js
 ```
 
 ## Functionality
@@ -102,6 +107,7 @@ function displayInventory() {
 * [MySQL](https://www.npmjs.com/package/mysql) - The MySQL pack used
 * [Inquirer](https://www.npmjs.com/package/inquirer) - Allows user interactivity
 * [console.table](https://www.npmjs.com/package/console.table) - Generated a table for data in database
+*[CLI Table](https://www.npmjs.com/package/cli-table) - Generated new table for low stock
 
 
 ## Authors
