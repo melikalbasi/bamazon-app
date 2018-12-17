@@ -106,7 +106,7 @@ function displayInventory() {
 
 ## Authors
 
-* **Melika Kalbasi** - *Initial work* - [Bamazon](https://github.com/Bamazon-app)
+* **Melika Kalbasi** - *Initial work* - [Bamazon](https://github.com/melikalbasi/bamazon-app)
 
 ## License
 
