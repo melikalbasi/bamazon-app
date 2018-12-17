@@ -1,6 +1,5 @@
 var mysql = require("mysql");
 var inquirer = require("inquirer");
-// var Table = require('cli-table');
 require("console.table");
 
 var connection = mysql.createConnection({
@@ -79,15 +78,13 @@ function displayInventory() {
           } else {
             // check to make sure we can handle the quantity they want to order.
             if (itemQuantity > currentInventory) {
-              console.log("Sorry! This item is sold out.")
+              console.log("Sorry! We don't have enough stock.")
               displayInventory();
             } else {
               console.log("Proceeding to update inventory..");
               updateInventory(userChoice, itemQuantity, currentInventory, itemPrice, itemName);
             }
           }
-
-
         })
     })
 }
