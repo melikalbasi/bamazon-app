@@ -123,7 +123,33 @@ function displayTotalCost(userChoice, itemQuantity, itemPrice, itemName) {
       if (err) throw err;
         var totalCost;
         totalCost = itemPrice * itemQuantity;
-        console.log("Your total for " + itemQuantity + " " + itemName + " items is " + totalCost.toFixed(2));
+        console.log("\nYour total for \n" + itemQuantity + "x " + itemName + " items \n" + 
+        "=======================\n" + "$" + totalCost.toFixed(2) + "\n");
+
+        inquirer
+        .prompt([
+          {
+            name: "order",
+            type: "list",
+            message: "Would you like to order again?",
+            choices: ["Yes" , "No"]
+          }
+        ]).then(function(answer) {
+          var yesOrNo = answer.order;
+
+          if (yesOrNo === "Yes") {
+            displayInventory();
+          } else {
+console.log("__________________________________________________________________\n")
+console.log("                         See you next time! \n   ")
+console.log("                              _    _      ")
+console.log("                             ( \---/ )    ");
+console.log("                              ) . . (    ");
+console.log("________________________,--._(___Y___)_,--._______________________");
+console.log("                        `--'           `--'      ");
+            connection.end();
+          }
+        })
       
     });
 }
