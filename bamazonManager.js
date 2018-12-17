@@ -24,47 +24,53 @@ connection.connect(function (err) {
 
 function managerPrompt() {
   inquirer
-    .prompt[(
+    .prompt([
       {
         type: "list",
         name: "action",
         message: "Hello Manager! What would you like to do?",
         choices: ["View Products for Sale", "View Low Inventory", "Add to Inventory", "Add New Product"],
       }
-    )].then(function (answer) {
-      var managerAction = answer.action;
+    ]).then(function (answers) {
+      var managerAction = answers.action;
 
-      switch (action) {
+      switch (managerAction) {
         case "View Products for Sale":
           viewInventory();
           break;
         case "View Low Inventory":
-          viewInventory();
+          viewLowInventory();
           break;
         case "Add to Inventory":
-          viewInventory();
+          addInventory();
           break;
         case "Add New Product":
-          viewInventory();
+          addNewProduct();
           break;
       };
 
-      if (managerAction = "View Products for Sale") {
-
+      function viewInventory() {
+        connection.query(
+          "SELECT * FROM products", function (err, res) {
+            if (err) throw err;
+      
+            console.table(res);
+        
+          })
       }
 
 
-      if (managerAction = "View Low Inventory") {
+      function viewLowInventory() {
         
       }
 
 
-      if (managerAction = "Add to Inventory") {
+      function addInventory() {
         
       }
 
 
-      if (managerAction = "Add New Product") {
+      function addNewProduct() {
         
       }
 
