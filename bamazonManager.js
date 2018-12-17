@@ -71,9 +71,48 @@ function managerPrompt() {
 
 
       function addNewProduct() {
-        
-      }
+        console.log("\nPlease fill out the following form to add a new product:\n")
+        inquirer
+          .prompt([
+            {
+              type: "input",
+              name: "productName",
+              message: "Enter name of item you would like to add: \n"
+            },
+            {
+              type: "input",
+              name: "deptName",
+              message: "Department item belongs to: \n"
+            },
+            {
+              type: "input",
+              name: "cost",
+              message: "Item cost: \n"
+            },
+            {
+              type: "input",
+              name: "stock",
+              message: "Stock quantity: \n"
+            }
+          ]).then(function(answers) {
+            connection.query(
+              "INSERT INTO products SET ?",
+              {
+                product_name: answers.productName,
+                department_name: answers.deptName,
+                price: answers.cost,
+                stock_quantity: answers.stock
+              },
+              function(err, res) {
+                if (err) throw err;
+                console.log("\nYour inventory has been updated!\n");
+                viewInventory();
+                managerPrompt();
+              }
+            )
 
+          })
+      }
 
     })
 }
