@@ -56,9 +56,10 @@ function displayInventory() {
             name: "itemNum",
             message: "How many would you like?",
           }
-        ]).then(function(answers) {
+        ]).then(function (answers) {
           var userChoice = parseInt(answers.itemID);
           var itemQuantity = parseInt(answers.itemNum);
+          var itemName;
           var currentInventory;
           var itemPrice;
 
@@ -66,9 +67,10 @@ function displayInventory() {
             if (userChoice === res[i].item_id) {
               currentInventory = res[i].stock_quantity;
               itemPrice = res[i].price;
+              itemName = res[i].product_name;
             }
           }
-          
+
           // check to make sure valid ID was entered
           if (!currentInventory) {
             console.log("Sorry you entered an invalid number.")
@@ -80,7 +82,7 @@ function displayInventory() {
               displayInventory();
             } else {
               console.log("Proceeding to update inventory..");
-              updateInventory(userChoice, itemQuantity, currentInventory, itemPrice);
+              updateInventory(userChoice, itemQuantity, currentInventory, itemPrice, itemName);
             }
           }
 
@@ -92,7 +94,7 @@ function displayInventory() {
 
 
 
-function updateInventory (userChoice, itemQuantity, currentInventory, itemPrice) {
+function updateInventory(userChoice, itemQuantity, currentInventory, itemPrice, itemName) {
   if (userChoice) {
     currentInventory -= itemQuantity;
     connection.query(
@@ -104,26 +106,24 @@ function updateInventory (userChoice, itemQuantity, currentInventory, itemPrice)
         {
           item_id: userChoice
         }
-      ], function(err, res) {
+      ], function (err, res) {
         if (err) throw err;
         console.log("Processing your order... ");
         // console.log(res.affectedRows);
-        displayTotalCost(userChoice, itemQuantity, itemPrice);
+        displayTotalCost(userChoice, itemQuantity, itemPrice, itemName);
       }
     )
-    }
+  }
 }
 
 
-function displayTotalCost (userChoice, itemQuantity, itemPrice) {
-  var totalCost;
-  totalCost = itemPrice * itemQuantity;
-  console.log(totalCost.toFixed(2));
-
-  inquirer
-    .prompt([
-      {
-
-      }
-    ])
+function displayTotalCost(userChoice, itemQuantity, itemPrice, itemName) {
+  connection.query(
+    "SELECT * FROM products", function (err, res) {
+      if (err) throw err;
+        var totalCost;
+        totalCost = itemPrice * itemQuantity;
+        console.log("Your total for " + itemQuantity + " " + itemName + " items is " + totalCost.toFixed(2));
+      
+    });
 }
