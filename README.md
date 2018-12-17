@@ -34,9 +34,9 @@ Once you have Bamazon cloned and all the dependencies install, migrate to the ap
 
 ![BAMAZON](images/bamazon_gif.gif)
 
-![BAMAZON2](images/bamazon_gif2.gif)
-
 ![BAMAZON3](images/bamazon_gif3.gif)
+
+![BAMAZON2](images/bamazon_gif2.gif)
 
 ### Code snippets
 
