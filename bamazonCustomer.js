@@ -17,6 +17,7 @@ var connection = mysql.createConnection({
   database: "bamazon"
 });
 
+// on connection display
 connection.connect(function (err) {
   if (err) throw err;
   console.log("======================================================================")
@@ -93,7 +94,7 @@ function displayInventory() {
 
 
 
-
+// update inventory function
 function updateInventory(userChoice, itemQuantity, currentInventory, itemPrice, itemName) {
   if (userChoice) {
     currentInventory -= itemQuantity;
@@ -117,39 +118,40 @@ function updateInventory(userChoice, itemQuantity, currentInventory, itemPrice, 
 }
 
 
+// function to display total and follow up with prompting the user to order again or exit
 function displayTotalCost(userChoice, itemQuantity, itemPrice, itemName) {
   connection.query(
     "SELECT * FROM products", function (err, res) {
       if (err) throw err;
-        var totalCost;
-        totalCost = itemPrice * itemQuantity;
-        console.log("\nYour total for \n" + itemQuantity + "x " + itemName + " items \n" + 
+      var totalCost;
+      totalCost = itemPrice * itemQuantity;
+      console.log("\nYour total for \n" + itemQuantity + "x " + itemName + " items \n" +
         "=======================\n" + "$" + totalCost.toFixed(2) + "\n");
 
-        inquirer
+      inquirer
         .prompt([
           {
             name: "order",
             type: "list",
             message: "Would you like to order again?",
-            choices: ["Yes" , "No"]
+            choices: ["Yes", "No"]
           }
-        ]).then(function(answer) {
+        ]).then(function (answer) {
           var yesOrNo = answer.order;
 
           if (yesOrNo === "Yes") {
             displayInventory();
           } else {
-console.log("__________________________________________________________________\n")
-console.log("                         See you next time! \n   ")
-console.log("                              _    _      ")
-console.log("                             ( \---/ )    ");
-console.log("                              ) . . (    ");
-console.log("________________________,--._(___Y___)_,--._______________________");
-console.log("                        `--'           `--'      ");
+            console.log("__________________________________________________________________\n")
+            console.log("                         See you next time! \n   ")
+            console.log("                              _    _      ")
+            console.log("                             ( \---/ )    ");
+            console.log("                              ) . . (    ");
+            console.log("________________________,--._(___Y___)_,--._______________________");
+            console.log("                        `--'           `--'      ");
             connection.end();
           }
         })
-      
+
     });
 }
