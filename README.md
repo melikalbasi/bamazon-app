@@ -107,7 +107,7 @@ function displayInventory() {
 * [MySQL](https://www.npmjs.com/package/mysql) - The MySQL pack used
 * [Inquirer](https://www.npmjs.com/package/inquirer) - Allows user interactivity
 * [console.table](https://www.npmjs.com/package/console.table) - Generated a table for data in database
-*[CLI Table](https://www.npmjs.com/package/cli-table) - Generated new table for low stock
+* [CLI Table](https://www.npmjs.com/package/cli-table) - Generated new table for low stock
 
 
 ## Authors
