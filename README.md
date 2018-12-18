@@ -35,11 +35,15 @@ node bamazonManager.js
 
 ## Functionality
 
-Once you have Bamazon cloned and all the dependencies install, migrate to the app and run the following tests
+Once you have Bamazon cloned and all the dependencies install, migrate to the app and run the following tests by selecting an item and quantity to see the functionality of the app 
 
 ![BAMAZON](images/bamazon_gif.gif)
 
+Continue purchasing items by hitting 'Yes' when prompted
+
 ![BAMAZON3](images/bamazon_gif3.gif)
+
+End application by hitting 'No' when prompted
 
 ![BAMAZON2](images/bamazon_gif2.gif)
 
