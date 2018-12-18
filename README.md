@@ -47,6 +47,12 @@ End application by hitting 'No' when prompted
 
 ![BAMAZON2](images/bamazon_gif2.gif)
 
+### Manager View
+
+![BAMAZONMANAGER](images/bamazon_manager.gif)
+
+
+
 ### Code snippets
 
 Customer view query example using inquirer
